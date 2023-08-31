@@ -44,9 +44,8 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import androidx.leanback.animation.LogAccelerateInterpolator;
-import androidx.leanback.animation.LogDecelerateInterpolator;
-import androidx.leanback.app.DetailsFragment;
+import androidx.leanback.animation.LogAccelerateInterpolatorNewTVUI;
+import androidx.leanback.animation.LogDecelerateInterpolatorNewTVUI;
 import androidx.leanback.widget.ItemBridgeAdapter;
 import androidx.leanback.widget.ObjectAdapter;
 import androidx.leanback.widget.PlaybackControlsRowPresenter;
@@ -70,7 +69,7 @@ import uk.co.chrisjenx.calligraphy.CalligraphyUtils;
 /**
  * Playback fragment modified according to TenFootUI UX requirements.
  */
-public class TenFootPlaybackOverlayFragment extends DetailsFragment {
+public class TenFootPlaybackOverlayFragmentNewTVUI extends DetailsSupportFragment {
 
     /**
      * No background.
@@ -534,11 +533,17 @@ public class TenFootPlaybackOverlayFragment extends DetailsFragment {
         }
 
         // Set the key pressed to true if the action is DOWN and remember which key is pressed
-        if (((KeyEvent) event).getAction() == KeyEvent.ACTION_DOWN) {
-            mKeyPressed = true;
-            mKeyCode = keyCode;
-        }
-        else {
+        try {
+            if (((KeyEvent) event).getAction() == KeyEvent.ACTION_DOWN) {
+                mKeyPressed = true;
+                mKeyCode = keyCode;
+            }
+            else {
+                mKeyPressed = false;
+                mKeyCode = -1;
+            }
+        } catch (Exception e) {
+//            e.printStackTrace();
             mKeyPressed = false;
             mKeyCode = -1;
         }
@@ -778,8 +783,8 @@ public class TenFootPlaybackOverlayFragment extends DetailsFragment {
         mBgFadeOutAnimator.addListener(mFadeListener);
     }
 
-    private TimeInterpolator mLogDecelerateInterpolator = new LogDecelerateInterpolator(100, 0);
-    private TimeInterpolator mLogAccelerateInterpolator = new LogAccelerateInterpolator(100, 0);
+    private TimeInterpolator mLogDecelerateInterpolator = new LogDecelerateInterpolatorNewTVUI(100, 0);
+    private TimeInterpolator mLogAccelerateInterpolator = new LogAccelerateInterpolatorNewTVUI(100, 0);
 
     private View getControlRowView() {
 
@@ -1261,7 +1266,7 @@ public class TenFootPlaybackOverlayFragment extends DetailsFragment {
         addVideoDetailsView(inflater, fragment_root);
         mBgAlpha = 255;
         updateBackground();
-        getRowsFragment().setExternalAdapterListener(mAdapterListener);
+        getRowsSupportFragment().setExternalAdapterListener(mAdapterListener);
         return mRootView;
     }
 

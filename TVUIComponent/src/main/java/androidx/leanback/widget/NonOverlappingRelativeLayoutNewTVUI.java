@@ -4,16 +4,16 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.RelativeLayout;
 
-public class NonOverlappingRelativeLayout extends RelativeLayout {
-    public NonOverlappingRelativeLayout(Context context) {
+public class NonOverlappingRelativeLayoutNewTVUI extends RelativeLayout {
+    public NonOverlappingRelativeLayoutNewTVUI(Context context) {
         this(context, null);
     }
 
-    public NonOverlappingRelativeLayout(Context context, AttributeSet attrs) {
+    public NonOverlappingRelativeLayoutNewTVUI(Context context, AttributeSet attrs) {
         super(context, attrs, 0);
     }
 
-    public NonOverlappingRelativeLayout(Context context, AttributeSet attrs, int defStyle) {
+    public NonOverlappingRelativeLayoutNewTVUI(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
     }
 

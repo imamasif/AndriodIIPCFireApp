@@ -143,7 +143,7 @@ public class CalligraphyConfig {
         /**
          * Use Reflection to intercept CustomView inflation with the correct Context.
          */
-        private boolean customViewCreation = true;
+        private boolean customViewCreation = false;
         /**
          * The fontAttrId to look up the font path from.
          */

@@ -23,16 +23,15 @@ import androidx.annotation.RestrictTo;
  * @hide
  */
 @RestrictTo(LIBRARY_GROUP)
-public class LogDecelerateInterpolator implements TimeInterpolator {
+public class LogAccelerateInterpolatorNewTVUI implements TimeInterpolator {
 
     int mBase;
     int mDrift;
     final float mLogScale;
 
-    public LogDecelerateInterpolator(int base, int drift) {
+    public LogAccelerateInterpolatorNewTVUI(int base, int drift) {
         mBase = base;
         mDrift = drift;
-
         mLogScale = 1f / computeLog(1, mBase, mDrift);
     }
 
@@ -42,6 +41,6 @@ public class LogDecelerateInterpolator implements TimeInterpolator {
 
     @Override
     public float getInterpolation(float t) {
-        return computeLog(t, mBase, mDrift) * mLogScale;
+        return 1 - computeLog(1 - t, mBase, mDrift) * mLogScale;
     }
 }

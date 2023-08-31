@@ -74,7 +74,8 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import androidx.annotation.NonNull;
-import androidx.leanback.app.TenFootPlaybackOverlayFragment;
+import androidx.fragment.app.FragmentActivity;
+import androidx.leanback.app.TenFootPlaybackOverlayFragmentNewTVUI;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -101,7 +102,7 @@ import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 /**
  * PlaybackOverlayActivity for content playback that loads PlaybackOverlayFragment
  */
-public class PlaybackActivity extends Activity implements
+public class PlaybackActivity extends FragmentActivity implements
         PlaybackOverlayFragment.OnPlayPauseClickedListener, AMZNMediaPlayer
         .OnStateChangeListener, AMZNMediaPlayer.OnErrorListener, AMZNMediaPlayer.OnInfoListener,
         AudioManager.OnAudioFocusChangeListener, AMZNMediaPlayer.OnCuesListener,
@@ -248,7 +249,7 @@ public class PlaybackActivity extends Activity implements
 
         mProgressBar = (ProgressBar) findViewById(R.id.playback_progress);
         mPlaybackOverlayFragment =
-                (PlaybackOverlayFragment) getFragmentManager()
+                (PlaybackOverlayFragment) getSupportFragmentManager()
                         .findFragmentById(R.id.playback_controls_fragment);
 
         mSelectedContent =
@@ -334,8 +335,8 @@ public class PlaybackActivity extends Activity implements
         }
 
         //Get playback fragment to set in media session for callbacks
-        TenFootPlaybackOverlayFragment playbackFragment = (TenFootPlaybackOverlayFragment)
-                getFragmentManager().findFragmentById(R.id.playback_controls_fragment);
+        TenFootPlaybackOverlayFragmentNewTVUI playbackFragment = (TenFootPlaybackOverlayFragmentNewTVUI)
+                getSupportFragmentManager().findFragmentById(R.id.playback_controls_fragment);
         //Initialize the media session helper and create the media session
         mMediaSessionController = new MediaSessionController(playbackFragment);
 
@@ -1134,7 +1135,7 @@ public class PlaybackActivity extends Activity implements
         }
 
         PlaybackOverlayFragment playbackOverlayFragment = (PlaybackOverlayFragment)
-                getFragmentManager().findFragmentById(R.id.playback_controls_fragment);
+                getSupportFragmentManager().findFragmentById(R.id.playback_controls_fragment);
         switch (keyCode) {
             case KeyEvent.KEYCODE_MEDIA_PLAY:
                 playbackOverlayFragment.togglePlayback(false);

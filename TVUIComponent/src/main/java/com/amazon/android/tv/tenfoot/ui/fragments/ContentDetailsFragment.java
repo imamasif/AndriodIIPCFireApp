@@ -63,7 +63,7 @@ import androidx.leanback.widget.ImageCardView;
 import androidx.leanback.widget.ListRow;
 import androidx.leanback.widget.ListRowPresenter;
 import androidx.leanback.widget.RowHeaderPresenter;
-import androidx.leanback.widget.TenFootActionPresenterSelector;
+import androidx.leanback.widget.TenFootActionPresenterSelectorNewTVUI;
 import androidx.leanback.widget.OnItemViewClickedListener;
 import androidx.leanback.widget.Presenter;
 import androidx.leanback.widget.Row;
@@ -272,7 +272,7 @@ public class ContentDetailsFragment extends androidx.leanback.app.DetailsFragmen
             Log.d(TAG, "Selected content is: " + mSelectedContent.toString());
         }
         final DetailsOverviewRow row = new DetailsOverviewRow(mSelectedContent);
-        row.setActionsAdapter(new ArrayObjectAdapter(new TenFootActionPresenterSelector()));
+        row.setActionsAdapter(new ArrayObjectAdapter(new TenFootActionPresenterSelectorNewTVUI()));
         row.setImageDrawable(ContextCompat.getDrawable(getActivity(),
                                                        android.R.color.transparent));
         int width = Helpers.convertDpToPixel(getActivity().getApplicationContext(),

@@ -39,10 +39,10 @@ permissions and limitations under the License.
             android:layout_height="172dp"
             style="?attr/lbImageCardViewType"/>
 
-    <androidx.leanback.widget.NonOverlappingRelativeLayout
+    <androidx.leanback.widget.NonOverlappingRelativeLayoutNewTVUI
             android:id="@+id/info_field"
             style="?attr/lbImageCardViewType" android:layout_height="match_parent"
             android:layout_width="wrap_content">
-    </androidx.leanback.widget.NonOverlappingRelativeLayout>
+    </androidx.leanback.widget.NonOverlappingRelativeLayoutNewTVUI>
 
 </merge>

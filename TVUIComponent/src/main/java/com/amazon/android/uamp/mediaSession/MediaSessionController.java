@@ -18,7 +18,7 @@ import android.content.Intent;
 import android.media.session.MediaSession;
 import android.media.session.PlaybackState;
 import androidx.annotation.NonNull;
-import androidx.leanback.app.TenFootPlaybackOverlayFragment;
+import androidx.leanback.app.TenFootPlaybackOverlayFragmentNewTVUI;
 import android.util.Log;
 import android.content.Context;
 
@@ -38,7 +38,7 @@ public class MediaSessionController {
     /**
      * Public constructor.
      */
-    public MediaSessionController(TenFootPlaybackOverlayFragment playbackFragmentCallback) {
+    public MediaSessionController(TenFootPlaybackOverlayFragmentNewTVUI playbackFragmentCallback) {
 
         setPlaybackFragmentCallback(playbackFragmentCallback);
         initializeMediaSessionHelper();
@@ -49,7 +49,7 @@ public class MediaSessionController {
      *
      * @param playbackFragment Playback fragment which implements the OnMediaSessionEventListener.
      */
-    public void setPlaybackFragmentCallback(TenFootPlaybackOverlayFragment playbackFragment) {
+    public void setPlaybackFragmentCallback(TenFootPlaybackOverlayFragmentNewTVUI playbackFragment) {
 
         // This makes sure that the playback fragment has implemented the callback interface. If
         // not, it throws an exception.

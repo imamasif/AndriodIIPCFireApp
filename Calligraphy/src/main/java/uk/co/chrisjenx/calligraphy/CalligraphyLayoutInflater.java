@@ -67,11 +67,9 @@ class CalligraphyLayoutInflater extends LayoutInflater implements CalligraphyAct
     private void setUpLayoutFactories(boolean cloned) {
         if (cloned) return;
         // If we are HC+ we get and set Factory2 otherwise we just wrap Factory1
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
-            if (getFactory2() != null && !(getFactory2() instanceof WrapperFactory2)) {
-                // Sets both Factory/Factory2
-                setFactory2(getFactory2());
-            }
+        if (getFactory2() != null && !(getFactory2() instanceof WrapperFactory2)) {
+            // Sets both Factory/Factory2
+            setFactory2(getFactory2());
         }
         // We can do this as setFactory2 is used for both methods.
         if (getFactory() != null && !(getFactory() instanceof WrapperFactory)) {
@@ -90,7 +88,6 @@ class CalligraphyLayoutInflater extends LayoutInflater implements CalligraphyAct
     }
 
     @Override
-    @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     public void setFactory2(Factory2 factory2) {
         // Only set our factory and wrap calls to the Factory2 trying to be set!
         if (!(factory2 instanceof WrapperFactory2)) {
@@ -133,7 +130,6 @@ class CalligraphyLayoutInflater extends LayoutInflater implements CalligraphyAct
      * We opted to manual injection over aggressive reflection, this should be less fragile.
      */
     @Override
-    @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     public View onActivityCreateView(View parent, View view, String name, Context context, AttributeSet attrs) {
         return mCalligraphyFactory.onViewCreated(createCustomViewInternal(parent, view, name, context, attrs), context, attrs);
     }
@@ -143,7 +139,6 @@ class CalligraphyLayoutInflater extends LayoutInflater implements CalligraphyAct
      * BUT only for none CustomViews.
      */
     @Override
-    @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     protected View onCreateView(View parent, String name, AttributeSet attrs) throws ClassNotFoundException {
         return mCalligraphyFactory.onViewCreated(super.onCreateView(parent, name, attrs),
                 getContext(), attrs);
@@ -215,7 +210,7 @@ class CalligraphyLayoutInflater extends LayoutInflater implements CalligraphyAct
                     mConstructorArgsArr[0] = lastContext;
                     ReflectionUtils.setValue(mConstructorArgs, this, mConstructorArgsArr);
                 }
-            } catch (Exception e) {
+            } catch (Exception | Error e) {
                 e.printStackTrace();
             }
         }
@@ -243,14 +238,6 @@ class CalligraphyLayoutInflater extends LayoutInflater implements CalligraphyAct
 
         @Override
         public View onCreateView(String name, Context context, AttributeSet attrs) {
-            if (Build.VERSION.SDK_INT < Build.VERSION_CODES.HONEYCOMB) {
-                return mCalligraphyFactory.onViewCreated(
-                        mInflater.createCustomViewInternal(
-                                null, mFactory.onCreateView(name, context, attrs), name, context, attrs
-                        ),
-                        context, attrs
-                );
-            }
             return mCalligraphyFactory.onViewCreated(
                     mFactory.onCreateView(name, context, attrs),
                     context, attrs
@@ -261,7 +248,6 @@ class CalligraphyLayoutInflater extends LayoutInflater implements CalligraphyAct
     /**
      * Factory 2 is the second port of call for LayoutInflation
      */
-    @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     private static class WrapperFactory2 implements Factory2 {
         protected final Factory2 mFactory2;
         protected final CalligraphyFactory mCalligraphyFactory;
@@ -290,7 +276,6 @@ class CalligraphyLayoutInflater extends LayoutInflater implements CalligraphyAct
      * Private factory is step three for Activity Inflation, this is what is attached to the
      * Activity on HC+ devices.
      */
-    @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     private static class PrivateWrapperFactory2 extends WrapperFactory2 {
 
         private final CalligraphyLayoutInflater mInflater;

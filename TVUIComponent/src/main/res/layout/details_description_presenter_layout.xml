@@ -37,7 +37,7 @@ permissions and limitations under the License.
         android:layout_height="wrap_content"
         >
 
-    <androidx.leanback.widget.ResizingTextView
+    <androidx.leanback.widget.ResizingTextViewNewTVUI
             android:id="@+id/details_description_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

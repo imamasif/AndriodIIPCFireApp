@@ -36,7 +36,7 @@ import android.view.View;
 /**
  * Extension of {@link ControlBar} to to change the default highlighted button.
  */
-public class TenFootControlBar extends ControlBar {
+public class TenFootControlBarNewTVUI extends ControlBar {
 
     private int mChildMarginFromCenter;
     private OnChildFocusedListener mOnChildFocusedListener;
@@ -45,7 +45,7 @@ public class TenFootControlBar extends ControlBar {
      * Constructor
      * {@inheritDoc}
      */
-    public TenFootControlBar(Context context, AttributeSet attrs) {
+    public TenFootControlBarNewTVUI(Context context, AttributeSet attrs) {
 
         super(context, attrs);
     }
@@ -54,7 +54,7 @@ public class TenFootControlBar extends ControlBar {
      * Constructor
      * {@inheritDoc}
      */
-    public TenFootControlBar(Context context, AttributeSet attrs, int defStyle) {
+    public TenFootControlBarNewTVUI(Context context, AttributeSet attrs, int defStyle) {
 
         super(context, attrs, defStyle);
     }

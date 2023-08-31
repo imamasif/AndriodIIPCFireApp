@@ -47,7 +47,7 @@ import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
-import androidx.leanback.app.TenFootPlaybackOverlayFragment;
+import androidx.leanback.app.TenFootPlaybackOverlayFragmentNewTVUI;
 import androidx.leanback.widget.AbstractDetailsDescriptionPresenter;
 import androidx.leanback.widget.Action;
 import androidx.leanback.widget.ArrayObjectAdapter;
@@ -88,7 +88,7 @@ import java.util.TimerTask;
 /**
  * Class for video playback with media control.
  */
-public class PlaybackOverlayFragment extends TenFootPlaybackOverlayFragment
+public class PlaybackOverlayFragment extends TenFootPlaybackOverlayFragmentNewTVUI
         implements MediaSessionController.OnMediaSessionEventListener {
 
     private static final String TAG = PlaybackOverlayFragment.class.getSimpleName();

@@ -28,7 +28,7 @@ import androidx.leanback.R;
  * <p>A {@link android.widget.TextView} that adjusts text size automatically in response
  * to certain trigger conditions, such as text that wraps over multiple lines.</p>
  */
-public class ResizingTextView extends TextView {
+public class ResizingTextViewNewTVUI extends TextView {
 
     /**
      * Trigger text resize when text flows into the last line of a multi-line text view.
@@ -51,7 +51,7 @@ public class ResizingTextView extends TextView {
     private int mDefaultPaddingTop;
     private int mDefaultPaddingBottom;
 
-    public ResizingTextView(Context ctx, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+    public ResizingTextViewNewTVUI(Context ctx, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(ctx, attrs, defStyleAttr);
         TypedArray a = ctx.obtainStyledAttributes(attrs, R.styleable.lbResizingTextView,
                 defStyleAttr, defStyleRes);
@@ -72,17 +72,17 @@ public class ResizingTextView extends TextView {
         }
     }
 
-    public ResizingTextView(Context ctx, AttributeSet attrs, int defStyleAttr) {
+    public ResizingTextViewNewTVUI(Context ctx, AttributeSet attrs, int defStyleAttr) {
         this(ctx, attrs, defStyleAttr, 0);
     }
 
-    public ResizingTextView(Context ctx, AttributeSet attrs) {
+    public ResizingTextViewNewTVUI(Context ctx, AttributeSet attrs) {
         // TODO We should define our own style that inherits from TextViewStyle, to set defaults
         // for new styleables,  We then pass the appropriate R.attr up the constructor chain here.
         this(ctx, attrs, android.R.attr.textViewStyle);
     }
 
-    public ResizingTextView(Context ctx) {
+    public ResizingTextViewNewTVUI(Context ctx) {
         this(ctx, null);
     }
 
@@ -95,7 +95,7 @@ public class ResizingTextView extends TextView {
 
     /**
      * Set the trigger conditions used to determine whether resize occurs. Pass
-     * a union of trigger condition constants, such as {@link ResizingTextView#TRIGGER_MAX_LINES}.
+     * a union of trigger condition constants, such as {@link ResizingTextViewNewTVUI#TRIGGER_MAX_LINES}.
      *
      * @param conditions A union of trigger condition constants
      */

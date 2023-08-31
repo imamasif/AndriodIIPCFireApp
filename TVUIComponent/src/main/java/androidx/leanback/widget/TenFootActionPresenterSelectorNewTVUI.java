@@ -41,17 +41,17 @@ import android.widget.Button;
 /**
  * A presenter class for an {@link Action} item.
  */
-public class TenFootActionPresenterSelector extends PresenterSelector {
+public class TenFootActionPresenterSelectorNewTVUI extends PresenterSelector {
 
     private final Presenter mOneLineActionPresenter =
-            new TenFootActionPresenterSelector.OneLineActionPresenter();
+            new TenFootActionPresenterSelectorNewTVUI.OneLineActionPresenter();
 
     private final Presenter mTwoLineActionPresenter =
-            new TenFootActionPresenterSelector.TwoLineActionPresenter();
+            new TenFootActionPresenterSelectorNewTVUI.TwoLineActionPresenter();
 
     private final Presenter[] mPresenters;
 
-    public TenFootActionPresenterSelector() {
+    public TenFootActionPresenterSelectorNewTVUI() {
 
         this.mPresenters = new Presenter[]{this.mOneLineActionPresenter,
                 this.mTwoLineActionPresenter};
